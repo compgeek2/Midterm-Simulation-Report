@@ -53,8 +53,8 @@ class LLMD:
     """llm-d default, "sticky until saturated": stay where the cache is unless that GPU is too busy."""
     name = "llm_d"
 
-    def __init__(self, limit: int):
-        self.limit = limit                          # tokens_in_flight() at which a GPU counts as saturated
+    def __init__(self, token_limit: int):
+        self.limit = token_limit                       # tokens_in_flight() at which a GPU counts as saturated
 
     def pick(self, call: Call, gpus: List[GPUView], now: float) -> GPUView:
         # The GPU holding the most of this program's cache
